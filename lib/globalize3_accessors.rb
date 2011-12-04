@@ -5,10 +5,7 @@ module ActiveRecord
     end
 
     module Accessors
-
-			def create_accessors
-        #puts globalize.translated_attribute_names
-				
+			def create_translated_attribute_accessors
 				I18n.available_locales.each do |locale|
 					this_locale = locale.to_s.gsub('-','_')
         		self.translated_attribute_names.each do |this_method|
@@ -20,8 +17,7 @@ module ActiveRecord
           	define_method("#{this_method}_#{this_locale}=") do |val|
           	  globalize.write("#{this_locale}","#{this_method}","#{val}")
           	end
-
-        		end unless translated_attribute_names.empty?
+					end unless translated_attribute_names.empty?
 				end
 			end
     end
