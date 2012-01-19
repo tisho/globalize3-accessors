@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 module ActiveRecord
   module Globalize3Accessors
     def self.included(base)
